@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=DM+Sans:opsz,wght@9..40,400..700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -48,11 +48,12 @@
 
 <style>
   :root {
-    --bg: #f4efe6;
-    --ink: #1a1814;
-    --ink-soft: #5c574e;
-    --accent: #7a3b2e;
-    --rule: #c8bfae;
+    --bg: #ffe0eb;
+    --ink: #2d0a1f;
+    --ink-soft: #6b3a4f;
+    --pink: #ff1f8f;
+    --pink-deep: #c2185b;
+    --rule: #ffaacb;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,16 +62,15 @@
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: "Newsreader", Georgia, serif;
+    font-family: "DM Sans", system-ui, sans-serif;
     font-weight: 400;
-    line-height: 1.65;
+    line-height: 1.6;
     min-height: 100vh;
     padding: 4rem 1.5rem 6rem;
     display: flex;
     justify-content: center;
     background-image:
-      radial-gradient(rgba(60,40,20,0.025) 1px, transparent 1px);
-    background-size: 3px 3px;
+      radial-gradient(ellipse at top, rgba(255, 31, 143, 0.10), transparent 60%);
   }
 
   main {
@@ -83,22 +83,27 @@
   }
 
   .name {
-    font-family: "Instrument Serif", Georgia, serif;
+    font-family: "Fraunces", Georgia, serif;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
     font-style: italic;
-    font-size: 3.5rem;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.5rem;
-    font-weight: 400;
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+    color: var(--pink);
   }
 
   .role {
     color: var(--ink-soft);
     font-size: 1.05rem;
     font-style: italic;
+    font-family: "Fraunces", Georgia, serif;
+    font-variation-settings: "opsz" 24, "SOFT" 100;
+    font-weight: 400;
   }
 
-  .role a { color: inherit; }
+  .role a { color: var(--pink-deep); }
 
   .photo {
     width: 140px;
@@ -108,67 +113,71 @@
     margin: 2rem 0;
     object-fit: cover;
     display: block;
-    border: 1px solid rgba(0,0,0,0.06);
+    border: 3px solid var(--pink);
   }
 
   p {
     margin-bottom: 1.25rem;
-  }
-
-  p + p {
-    text-indent: 1.5rem;
+    font-size: 1.05rem;
   }
 
   a {
-    color: var(--accent);
+    color: var(--pink-deep);
     text-decoration: none;
-    background-image: linear-gradient(transparent calc(100% - 1px), var(--accent) 1px);
+    background-image: linear-gradient(transparent calc(100% - 2px), var(--pink) 2px);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     transition: background-size 0.25s ease;
+    font-weight: 500;
   }
 
   a:hover {
     background-size: 100% 200%;
+    color: var(--ink);
   }
 
-  hr.rule {
-    border: 0;
-    text-align: center;
-    margin: 2.5rem 0;
+  .hearts {
+    display: flex;
+    justify-content: center;
+    gap: 0.85rem;
+    margin: 2.75rem 0;
   }
 
-  hr.rule::before {
-    content: "* * *";
-    color: var(--ink-soft);
-    letter-spacing: 0.4em;
-    font-size: 0.9rem;
+  .pixel-heart {
+    width: 22px;
+    height: 20px;
+    shape-rendering: crispEdges;
   }
+  .pixel-heart:nth-child(1) { color: var(--pink); }
+  .pixel-heart:nth-child(2) { color: var(--pink-deep); }
+  .pixel-heart:nth-child(3) { color: var(--pink); }
 
   .links {
     list-style: none;
-    font-size: 0.95rem;
+    font-family: "DM Mono", ui-monospace, monospace;
+    font-size: 0.85rem;
   }
 
   .links li {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 0.65rem 0;
-    border-bottom: 1px solid var(--rule);
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed var(--rule);
     gap: 1rem;
   }
 
   .links li:first-child {
-    border-top: 1px solid var(--rule);
+    border-top: 1px dashed var(--rule);
   }
 
   .links .label {
     color: var(--ink-soft);
-    font-variant: small-caps;
-    letter-spacing: 0.08em;
-    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
     flex-shrink: 0;
+    font-weight: 500;
   }
 
   .links a {
@@ -177,15 +186,17 @@
   }
 
   footer {
-    margin-top: 4rem;
+    margin-top: 3.5rem;
     color: var(--ink-soft);
-    font-size: 0.85rem;
-    font-style: italic;
+    font-size: 0.78rem;
+    text-align: center;
+    font-family: "DM Mono", ui-monospace, monospace;
+    letter-spacing: 0.08em;
   }
 
   @media (max-width: 480px) {
     body { padding: 2.5rem 1.25rem 4rem; }
-    .name { font-size: 2.75rem; }
+    .name { font-size: 3rem; }
   }
 </style>
 </head>
@@ -201,11 +212,15 @@
 
   <p>I'm a full-stack developer based in Indiana. I founded UtilityFinder LLC to answer a question that should have a simple answer but doesn't: who provides electric, gas, water, sewer, trash, and internet at a given U.S. address. UtilityFinder serves movers, homebuyers, realtors, and property managers, and is available at <a href="https://utilityfinder.com">utilityfinder.com</a> and on the iOS App Store.</p>
 
-  <p>I'm a Lead Data Product Owner at ACT by day, with a decade of product and data-architecture work behind me at ADESA, Onebridge, and KAR Global. I hold an MBA from Purdue University Global.</p>
+  <p>I'm a Lead Data Product Owner at ACT by day, with a decade of product and data-architecture work behind me at Eli Lilly (via Onebridge), ADESA, and KAR Global. I hold an MBA from Purdue University Global.</p>
 
   <p>I'm also a co-founder of Ruby &amp; Rosie's, a dog wash opening in central Indiana in early 2027, where I'm building the software and infrastructure. Otherwise, I'm with my husband, our two kids, and our dog.</p>
 
-  <hr class="rule">
+  <div class="hearts" aria-hidden="true">
+    <svg class="pixel-heart" viewBox="0 0 8 7" fill="currentColor"><rect x="1" y="0" width="2" height="1"/><rect x="5" y="0" width="2" height="1"/><rect x="0" y="1" width="8" height="1"/><rect x="0" y="2" width="8" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="1" y="4" width="6" height="1"/><rect x="2" y="5" width="4" height="1"/><rect x="3" y="6" width="2" height="1"/></svg>
+    <svg class="pixel-heart" viewBox="0 0 8 7" fill="currentColor"><rect x="1" y="0" width="2" height="1"/><rect x="5" y="0" width="2" height="1"/><rect x="0" y="1" width="8" height="1"/><rect x="0" y="2" width="8" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="1" y="4" width="6" height="1"/><rect x="2" y="5" width="4" height="1"/><rect x="3" y="6" width="2" height="1"/></svg>
+    <svg class="pixel-heart" viewBox="0 0 8 7" fill="currentColor"><rect x="1" y="0" width="2" height="1"/><rect x="5" y="0" width="2" height="1"/><rect x="0" y="1" width="8" height="1"/><rect x="0" y="2" width="8" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="1" y="4" width="6" height="1"/><rect x="2" y="5" width="4" height="1"/><rect x="3" y="6" width="2" height="1"/></svg>
+  </div>
 
   <ul class="links">
     <li><span class="label">Email</span> <a href="mailto:jessica@jessicamcelvoysemen.com">jessica@jessicamcelvoysemen.com</a></li>
@@ -216,7 +231,7 @@
   </ul>
 
   <footer>
-    Carmel, Indiana · <span id="year"></span>
+    CARMEL, INDIANA &nbsp;·&nbsp; <span id="year"></span>
   </footer>
 </main>
 
